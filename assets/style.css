@@ -1883,6 +1883,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  --base-y: 0px;
+  --parallax-y: 0px;
+  --reveal-y: 0px;
+  transform: translateY(calc(var(--base-y) + var(--parallax-y) + var(--reveal-y)));
   transition: transform var(--ml-piston-speed) var(--ml-piston-ease), color 0.3s ease;
   cursor: pointer;
   overflow: hidden;
@@ -1901,7 +1905,7 @@ body {
 }
 
 .ml-piston-cell:hover {
-  transform: translateY(-20px);
+  --base-y: -20px;
 }
 
 .ml-piston-cell:hover::after {
@@ -1909,11 +1913,11 @@ body {
 }
 
 .ml-piston-cell:nth-child(even) {
-  transform: translateY(20px);
+  --base-y: 20px;
 }
 
 .ml-piston-cell:nth-child(even):hover {
-  transform: translateY(0px);
+  --base-y: 0px;
 }
 
 .ml-cell-content {

@@ -213,11 +213,10 @@
     var cells = document.querySelectorAll('.ml-piston-cell');
     document.addEventListener('mousemove', function (e) {
       var mouseX = e.clientX / window.innerWidth;
-      cells.forEach(function (cell, index) {
-        var isEven = index % 2 === 0;
-        var offset = (isEven ? 1 : -1) * (mouseX * 10);
+      var parallax = (mouseX - 0.5) * 20;
+      cells.forEach(function (cell) {
         if (!cell.matches(':hover')) {
-          cell.style.transform = 'translateY(' + (offset + (isEven ? 0 : 20)) + 'px)';
+          cell.style.setProperty('--parallax-y', parallax + 'px');
         }
       });
     });
@@ -227,7 +226,7 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.setProperty('--reveal-y', '0px');
         }
       });
     }, { threshold: 0.1 });
@@ -235,7 +234,7 @@
     cells.forEach(function (cell, index) {
       cell.style.opacity = '0';
       cell.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-      cell.style.transform = index % 2 === 0 ? 'translateY(40px)' : 'translateY(60px)';
+      cell.style.setProperty('--reveal-y', index % 2 === 0 ? '40px' : '60px');
       mlObserver.observe(cell);
     });
   </script>
