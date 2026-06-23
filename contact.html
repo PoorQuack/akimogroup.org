@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Akimo Group — Oil & Gas, Water & Beverages, Motors & Logistics, Farms." />
+  <meta property="og:title" content="Akimo Group | Contact" />
+  <meta property="og:description" content="One Vision. Reach Out." />
+  <meta property="og:type" content="website" />
+  <title>Akimo Group | Contact</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='0,0 32,0 16,16' fill='%234caf50'/><polygon points='32,0 32,32 16,16' fill='%23d32f2f'/><polygon points='32,32 0,32 16,16' fill='%23f57c00'/><polygon points='0,32 0,0 16,16' fill='%23795548'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="contact-page">
+
+  <!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="navbar__logo" aria-label="Akimo Group home">
+      <img src="assets/logo.svg" alt="Akimo Group" />
+    </a>
+    <div class="navbar__actions">
+      <div class="navbar__menu" id="navMenu">
+        <button class="navbar__menu-btn" id="navMenuBtn" aria-expanded="false" aria-controls="navDropdown" aria-label="Open menu">
+          <span class="menu-label">Ecosystems</span>
+          <span class="menu-icon"></span>
+        </button>
+        <ul class="navbar__dropdown" id="navDropdown" role="menu">
+          <li class="dd-item dd-item--home">
+            <a href="index.html" class="dd-link" role="menuitem">
+              <div class="dd-sap"></div>
+              <span class="dd-text">Home</span>
+              <span class="dd-index">01</span>
+            </a>
+          </li>
+          <li class="dd-item dd-item--oil">
+            <a href="oil-gas.html" class="dd-link" role="menuitem">
+              <div class="dd-sap"></div>
+              <span class="dd-text">Oil &amp; Gas</span>
+              <span class="dd-index">02</span>
+            </a>
+          </li>
+          <li class="dd-item dd-item--water">
+            <a href="water.html" class="dd-link" role="menuitem">
+              <div class="dd-sap"></div>
+              <span class="dd-text">Water &amp; Beverages</span>
+              <span class="dd-index">03</span>
+            </a>
+          </li>
+          <li class="dd-item dd-item--motors">
+            <a href="motors.html" class="dd-link" role="menuitem">
+              <div class="dd-sap"></div>
+              <span class="dd-text">Motors &amp; Logistics</span>
+              <span class="dd-index">04</span>
+            </a>
+          </li>
+          <li class="dd-item dd-item--farms">
+            <a href="farms.html" class="dd-link" role="menuitem">
+              <div class="dd-sap"></div>
+              <span class="dd-text">Farms</span>
+              <span class="dd-index">05</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a href="contact.html" class="navbar__contact">Contact</a>
+    </div>
+  </nav>
+
+  <svg class="grain">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+  </svg>
+
+  <div class="monolith-container">
+    <!-- Left: Fixed Navigation/Branding -->
+    <aside class="strata-nav">
+      <div class="brand-header">
+        <h1>Akimo Group</h1>
+        <p style="font-family: var(--mono); font-size: 0.7rem; margin-top: 10px;">NI · HQ · 2024</p>
+      </div>
+
+      <nav class="sector-list" aria-label="Contact">
+        <div class="sector-item" data-color="contact">
+          <span>00. Contact</span>
+          Reach Out
+        </div>
+      </nav>
+
+      <div class="strata-footer">
+        <p style="font-family: var(--mono); font-size: 0.7rem; color: rgba(255,255,255,0.3);">
+          LAT: 6.5244° N<br>
+          LONG: 3.3792° E
+        </p>
+      </div>
+    </aside>
+
+    <!-- Right: Contact Content -->
+    <main class="content-stack">
+      <section class="contact-monolith">
+        <div class="form-header">
+          <h2>One Vision.</h2>
+        </div>
+
+        <a href="mailto:info@akimogroup.com" class="contact-info">info@akimogroup.com</a>
+
+        <form id="contact-form">
+          <div class="input-group">
+            <input type="text" id="name" placeholder=" " required>
+            <label for="name">Your Name / Organization</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Electronic Mail Address</label>
+          </div>
+
+          <div class="input-group">
+            <select id="division">
+              <option value="oil">Akimo Oil &amp; Gas</option>
+              <option value="water">JK Water &amp; Beverages</option>
+              <option value="motors">Awuncha / Ava Logistics</option>
+              <option value="farms">Ego / Onyinye Farms</option>
+              <option value="general">General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <textarea id="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 2.5L2.5 7.5L10 10L12.5 17.5L17.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="contact-details">
+          <div>
+            <h4>Headquarters</h4>
+            <p>Victoria Island, Lagos, Nigeria<br>Akimo Tower, Floor 12</p>
+          </div>
+          <div>
+            <h4>Direct Line</h4>
+            <p>+234 (0) 800 AKIMO GP<br>+234 (0) 1 234 5678</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="visual-accent">
+    <div class="accent-box b1"></div>
+    <div class="accent-box b2"></div>
+    <div class="accent-box b3"></div>
+    <div class="accent-box b4"></div>
+  </div>
+
+  <script>
+    // Form submission animation
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('.submit-btn');
+      btn.innerHTML = 'TRANSMITTING...';
+      btn.style.opacity = '0.5';
+      setTimeout(() => {
+        btn.innerHTML = 'MESSAGE SENT';
+        btn.style.background = 'var(--farms)';
+      }, 2000);
+    });
+
+    // Shared navbar dropdown
+    var navMenu = document.getElementById('navMenu');
+    var navMenuBtn = document.getElementById('navMenuBtn');
+    navMenuBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = navMenu.classList.toggle('is-open');
+      navMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.addEventListener('click', function (e) {
+      if (!navMenu.contains(e.target)) {
+        navMenu.classList.remove('is-open');
+        navMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.getElementById('navDropdown').querySelectorAll('.dd-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('is-open');
+        navMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+      link.addEventListener('mousemove', function (e) {
+        var rect = link.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        link.style.transform = 'translateX(' + (x * 5) + 'px) skew(' + (-x * 2) + 'deg)';
+      });
+      link.addEventListener('mouseleave', function () {
+        link.style.transform = 'translateX(0) skew(0)';
+      });
+    });
+  </script>
+</body>
+</html>
