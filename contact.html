@@ -5,16 +5,547 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact Akimo Group — Oil & Gas, Water & Beverages, Motors & Logistics, Farms." />
   <meta property="og:title" content="Akimo Group | Contact" />
-  <meta property="og:description" content="One Vision. Reach Out." />
+  <meta property="og:description" content="Get in touch with Akimo Group." />
   <meta property="og:type" content="website" />
-  <title>Akimo Group | Contact</title>
+  <title>Akimo Group | Vitreous Contact Portal</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><polygon points='0,0 32,0 16,16' fill='%234caf50'/><polygon points='32,0 32,32 16,16' fill='%23d32f2f'/><polygon points='32,32 0,32 16,16' fill='%23f57c00'/><polygon points='0,32 0,0 16,16' fill='%23795548'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Space+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05070a;
+      --oil-red: #ff3e3e;
+      --water-blue: #00d1ff;
+      --motor-orange: #ff9d00;
+      --farm-green: #2ecc71;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-main: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #fff;
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-top: var(--nav-height, 72px);
+    }
+
+    /* Site navbar — dark theme */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height, 72px);
+      background: rgba(5, 7, 10, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      z-index: 1000;
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-decoration: none;
+    }
+
+    .navbar__logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navbar__menu {
+      position: relative;
+    }
+
+    .navbar__menu-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-label {
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .menu-icon {
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg) translate(-2px, -2px);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      flex-shrink: 0;
+    }
+
+    .navbar__menu.is-open .menu-icon {
+      transform: rotate(-135deg) translate(-4px, -4px);
+    }
+
+    .navbar__dropdown {
+      position: absolute;
+      top: calc(100% + 16px);
+      right: 0;
+      width: 320px;
+      list-style: none;
+      margin: 0;
+      padding: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) skewX(-1deg);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(10, 12, 15, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.4);
+      z-index: 1001;
+    }
+
+    .navbar__menu.is-open .navbar__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) skewX(0);
+    }
+
+    .dd-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dd-item:last-child {
+      border-bottom: none;
+    }
+
+    .dd-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dd-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      padding-left: 28px;
+    }
+
+    .dd-sap {
+      width: 0;
+      height: 2px;
+      background: var(--motor-orange);
+      transition: width 0.3s ease;
+      margin-right: 12px;
+    }
+
+    .dd-link:hover .dd-sap {
+      width: 20px;
+    }
+
+    .dd-index {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      opacity: 0.4;
+    }
+
+    .navbar__contact {
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .navbar__contact:hover {
+      background: var(--motor-orange);
+      color: #000;
+      border-color: var(--motor-orange);
+    }
+
+    /* Noise Texture */
+    .noise {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.05;
+      z-index: 1000;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Vitreous Conduit Background */
+    .conduit-web {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .conduit-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      height: 1px;
+      width: 100%;
+      transform: rotate(-45deg);
+    }
+
+    /* Layout Structure */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .container { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 40px 20px; }
+      .navbar__dropdown { width: 100vw; right: -5vw; }
+    }
+
+    /* Header Elements */
+    .header-brand {
+      grid-column: 1 / -1;
+      margin-bottom: 60px;
+      border-left: 2px solid #fff;
+      padding-left: 30px;
+    }
+
+    .header-brand h1 {
+      font-size: clamp(2rem, 8vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: 0.9;
+    }
+
+    .header-brand p {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      opacity: 0.5;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* Sector Grid */
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .sector-grid { grid-template-columns: 1fr; }
+    }
+
+    .sector-card {
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 4px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      cursor: pointer;
+    }
+
+    .sector-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--accent-color);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--accent-color);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .sector-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Sector Specifics */
+    .oil { --accent-color: var(--oil-red); }
+    .water { --accent-color: var(--water-blue); }
+    .logistics { --accent-color: var(--motor-orange); }
+    .farms { --accent-color: var(--farm-green); }
+
+    .sector-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sector-card .tagline {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .sector-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+
+    .sector-stats {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 4px 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* Contact Form Suspension */
+    .contact-suspension {
+      position: relative;
+    }
+
+    .contact-panel {
+      position: sticky;
+      top: calc(var(--nav-height, 72px) + 40px);
+      background: rgba(10, 12, 15, 0.8);
+      border: 1px solid var(--border);
+      padding: 50px;
+      border-radius: 4px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      animation: suspend 6s ease-in-out infinite;
+    }
+
+    @keyframes suspend {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .contact-panel h2 {
+      font-size: 2.5rem;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .input-group input, .input-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-group select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: #fff;
+      padding: 15px 0;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      outline: none;
+      appearance: none;
+      text-transform: uppercase;
+    }
+
+    .input-group select option {
+      background: #0a0c0f;
+      color: #fff;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:valid ~ label,
+    .input-group textarea:focus ~ label,
+    .input-group textarea:valid ~ label {
+      top: -10px;
+      font-size: 0.6rem;
+      color: var(--water-blue);
+      opacity: 1;
+    }
+
+    .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+      border-bottom-color: #fff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      color: #000;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .submit-btn:hover {
+      background: var(--water-blue);
+      transform: scale(0.98);
+    }
+
+    .contact-info-footer {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-info-footer { grid-template-columns: 1fr; }
+    }
+
+    .info-block span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .info-block p {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .info-block a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .info-block a:hover {
+      color: var(--water-blue);
+    }
+
+    .glow-orb {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    /* Visual Reveal Animations */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    [data-reveal].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body class="contact-page">
+<body>
 
   <!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
   <nav class="navbar" aria-label="Main navigation">
@@ -30,35 +561,30 @@
         <ul class="navbar__dropdown" id="navDropdown" role="menu">
           <li class="dd-item dd-item--home">
             <a href="index.html" class="dd-link" role="menuitem">
-              <div class="dd-sap"></div>
               <span class="dd-text">Home</span>
               <span class="dd-index">01</span>
             </a>
           </li>
           <li class="dd-item dd-item--oil">
             <a href="oil-gas.html" class="dd-link" role="menuitem">
-              <div class="dd-sap"></div>
               <span class="dd-text">Oil &amp; Gas</span>
               <span class="dd-index">02</span>
             </a>
           </li>
           <li class="dd-item dd-item--water">
             <a href="water.html" class="dd-link" role="menuitem">
-              <div class="dd-sap"></div>
               <span class="dd-text">Water &amp; Beverages</span>
               <span class="dd-index">03</span>
             </a>
           </li>
           <li class="dd-item dd-item--motors">
             <a href="motors.html" class="dd-link" role="menuitem">
-              <div class="dd-sap"></div>
               <span class="dd-text">Motors &amp; Logistics</span>
               <span class="dd-index">04</span>
             </a>
           </li>
           <li class="dd-item dd-item--farms">
             <a href="farms.html" class="dd-link" role="menuitem">
-              <div class="dd-sap"></div>
               <span class="dd-text">Farms</span>
               <span class="dd-index">05</span>
             </a>
@@ -69,114 +595,168 @@
     </div>
   </nav>
 
-  <svg class="grain">
-    <filter id="noiseFilter">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-    </filter>
-    <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-  </svg>
+  <div class="noise"></div>
 
-  <div class="monolith-container">
-    <!-- Left: Fixed Navigation/Branding -->
-    <aside class="strata-nav">
-      <div class="brand-header">
-        <h1>Akimo Group</h1>
-        <p style="font-family: var(--mono); font-size: 0.7rem; margin-top: 10px;">NI · HQ · 2024</p>
+  <div class="conduit-web" id="conduitBg"></div>
+
+  <div class="container">
+    <header class="header-brand" data-reveal>
+      <p>Unified Conglomerate Strategy</p>
+      <h1>Akimo<br>Group.</h1>
+    </header>
+
+    <div class="sector-grid">
+      <!-- Oil & Gas -->
+      <div class="sector-card oil" data-reveal>
+        <div>
+          <span class="tagline">Energy &amp; Extraction</span>
+          <h3>Akimo Oil &amp; Gas</h3>
+          <p>Crude &amp; Energy. Extractive excellence with tectonic precision. Upstream hydrocarbon production and end-to-end supply chain.</p>
+        </div>
+        <div class="sector-stats">
+          <div class="stat-pill">UPSTREAM</div>
+          <div class="stat-pill">DISTRIBUTION</div>
+          <div class="stat-pill">SUPPLY CHAIN</div>
+        </div>
       </div>
 
-      <nav class="sector-list" aria-label="Contact">
-        <div class="sector-item" data-color="contact">
-          <span>00. Contact</span>
-          Reach Out
+      <!-- Water -->
+      <div class="sector-card water" data-reveal>
+        <div>
+          <span class="tagline">Purity &amp; Flow</span>
+          <h3>JK Water &amp; Beverages</h3>
+          <p>Water and beverage logistics at scale. Delivering purified drinking water and distribution infrastructure to communities.</p>
         </div>
-      </nav>
-
-      <div class="strata-footer">
-        <p style="font-family: var(--mono); font-size: 0.7rem; color: rgba(255,255,255,0.3);">
-          LAT: 6.5244° N<br>
-          LONG: 3.3792° E
-        </p>
+        <div class="sector-stats">
+          <div class="stat-pill">PURIFIED WATER</div>
+          <div class="stat-pill">LOGISTICS</div>
+          <div class="stat-pill">BEVERAGES</div>
+        </div>
       </div>
-    </aside>
 
-    <!-- Right: Contact Content -->
-    <main class="content-stack">
-      <section class="contact-monolith">
-        <div class="form-header">
-          <h2>One Vision.</h2>
+      <!-- Motors -->
+      <div class="sector-card logistics" data-reveal>
+        <div>
+          <span class="tagline">Kinetic Motion</span>
+          <h3>Awuncha Motors</h3>
+          <p>Industrial vehicle solutions and freight orchestration. Ava Logistics handles fleet management across the nation.</p>
         </div>
+        <div class="sector-stats">
+          <div class="stat-pill">LAST-MILE</div>
+          <div class="stat-pill">HAULAGE</div>
+          <div class="stat-pill">FLEET</div>
+        </div>
+      </div>
 
-        <a href="mailto:info@akimogroup.com" class="contact-info">info@akimogroup.com</a>
+      <!-- Farms -->
+      <div class="sector-card farms" data-reveal>
+        <div>
+          <span class="tagline">Earth First</span>
+          <h3>Ego &amp; Onyinye Farms</h3>
+          <p>Sustainable animal husbandry and palm oil processing harmonised with the biosphere for local and export markets.</p>
+        </div>
+        <div class="sector-stats">
+          <div class="stat-pill">LIVESTOCK</div>
+          <div class="stat-pill">PALM OIL</div>
+          <div class="stat-pill">100% SUSTAINABLE</div>
+        </div>
+      </div>
+    </div>
 
+    <aside class="contact-suspension" data-reveal>
+      <div class="contact-panel">
+        <div class="glow-orb" style="background: var(--water-blue); top: -100px; right: -100px;"></div>
+        <h2>Get in Touch</h2>
         <form id="contact-form">
           <div class="input-group">
-            <input type="text" id="name" placeholder=" " required>
-            <label for="name">Your Name / Organization</label>
+            <input type="text" id="name" required>
+            <label for="name">Full Name</label>
           </div>
-
           <div class="input-group">
-            <input type="email" id="email" placeholder=" " required>
-            <label for="email">Electronic Mail Address</label>
+            <input type="email" id="email" required>
+            <label for="email">Email Address</label>
           </div>
-
           <div class="input-group">
             <select id="division">
-              <option value="oil">Akimo Oil &amp; Gas</option>
-              <option value="water">JK Water &amp; Beverages</option>
-              <option value="motors">Awuncha / Ava Logistics</option>
-              <option value="farms">Ego / Onyinye Farms</option>
-              <option value="general">General Inquiry</option>
+              <option value="" disabled selected>SELECT DIVISION</option>
+              <option value="oil">OIL &amp; GAS</option>
+              <option value="water">WATER &amp; BEVERAGES</option>
+              <option value="motors">MOTORS &amp; LOGISTICS</option>
+              <option value="farms">AGRICULTURE</option>
             </select>
           </div>
-
           <div class="input-group">
-            <textarea id="message" rows="4" placeholder=" " required></textarea>
-            <label for="message">Your Message</label>
+            <textarea id="message" rows="4" required></textarea>
+            <label for="message">Inquiry Details</label>
           </div>
-
           <button type="submit" class="submit-btn">
-            Send Message
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.5 2.5L2.5 7.5L10 10L12.5 17.5L17.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <span>Send Message</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </form>
 
-        <div class="contact-details">
-          <div>
-            <h4>Headquarters</h4>
-            <p>Victoria Island, Lagos, Nigeria<br>Akimo Tower, Floor 12</p>
+        <div class="contact-info-footer">
+          <div class="info-block">
+            <span>Call Us</span>
+            <p><a href="tel:+2347075930930">+234 (0) 7075 930 930</a></p>
+            <p><a href="tel:+2347051620881">+234 (0) 705 1620 881</a></p>
+            <p style="margin-top: 8px; opacity: 0.6;">Mon - Fri: 8AM - 6PM</p>
           </div>
-          <div>
-            <h4>Direct Line</h4>
-            <p>+234 (0) 800 AKIMO GP<br>+234 (0) 1 234 5678</p>
+          <div class="info-block">
+            <span>Email Us</span>
+            <p><a href="mailto:info@akimogroup.org">info@akimogroup.org</a></p>
+            <p><a href="mailto:business@akimogroup.org">business@akimogroup.org</a></p>
+            <p><a href="mailto:support@akimogroup.org">support@akimogroup.org</a></p>
+          </div>
+          <div class="info-block" style="grid-column: 1 / -1;">
+            <span>Visit Us</span>
+            <p>Along Adapalm oil, opposite Umunwaku Central School, Ohaji Egebma L.G.A, Imo State, Nigeria</p>
           </div>
         </div>
-      </section>
-    </main>
-  </div>
-
-  <div class="visual-accent">
-    <div class="accent-box b1"></div>
-    <div class="accent-box b2"></div>
-    <div class="accent-box b3"></div>
-    <div class="accent-box b4"></div>
+      </div>
+    </aside>
   </div>
 
   <script>
-    // Form submission animation
+    // Reveal On Scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+    // Dynamic Conduit Background
+    const bg = document.getElementById('conduitBg');
+    for (let i = 0; i < 20; i++) {
+      const line = document.createElement('div');
+      line.className = 'conduit-line';
+      line.style.top = `${Math.random() * 100}%`;
+      line.style.left = `${Math.random() * 100}%`;
+      line.style.animationDelay = `${Math.random() * 5}s`;
+      line.style.opacity = Math.random() * 0.3;
+      bg.appendChild(line);
+    }
+
+    // Form submission feedback
     document.getElementById('contact-form').addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = e.target.querySelector('.submit-btn');
-      btn.innerHTML = 'TRANSMITTING...';
-      btn.style.opacity = '0.5';
+      const btn = e.target.querySelector('.submit-btn span');
+      const originalText = btn.textContent;
+      btn.textContent = 'SENDING...';
       setTimeout(() => {
-        btn.innerHTML = 'MESSAGE SENT';
-        btn.style.background = 'var(--farms)';
-      }, 2000);
+        btn.textContent = 'MESSAGE SENT';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      }, 1500);
     });
 
-    // Shared navbar dropdown
+    // Dropdown menu toggle
     var navMenu = document.getElementById('navMenu');
     var navMenuBtn = document.getElementById('navMenuBtn');
     navMenuBtn.addEventListener('click', function (e) {
@@ -195,16 +775,8 @@
         navMenu.classList.remove('is-open');
         navMenuBtn.setAttribute('aria-expanded', 'false');
       });
-      link.addEventListener('mousemove', function (e) {
-        var rect = link.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width - 0.5;
-        var y = (e.clientY - rect.top) / rect.height - 0.5;
-        link.style.transform = 'translateX(' + (x * 5) + 'px) skew(' + (-x * 2) + 'deg)';
-      });
-      link.addEventListener('mouseleave', function () {
-        link.style.transform = 'translateX(0) skew(0)';
-      });
     });
   </script>
+
 </body>
 </html>
