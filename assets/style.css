@@ -2725,6 +2725,71 @@ body {
   text-transform: uppercase;
 }
 
+/* Onyinye Palm Oil detail */
+.farms-palm {
+  padding: 6rem 5vw;
+  background: white;
+  border-top: 2px solid var(--farms-green);
+}
+
+.farms-palm__intro {
+  max-width: 900px;
+  margin-bottom: 4rem;
+}
+
+.farms-palm__intro h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: var(--farms-green);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.farms-palm__intro p {
+  font-size: 1.15rem;
+  color: #4a5d4a;
+  line-height: 1.7;
+}
+
+.farms-palm__services h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--farms-green);
+  margin-bottom: 0.5rem;
+}
+
+.farms-palm__subhead {
+  font-size: 1rem;
+  color: #4a5d4a;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.farms-palm__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--farms-green);
+  border: 2px solid var(--farms-green);
+}
+
+.farms-palm__card {
+  background: white;
+  padding: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.farms-palm__card:hover {
+  background: var(--farms-green);
+  color: white;
+}
+
+.farms-palm__card h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .farms-hero {
@@ -2761,6 +2826,9 @@ body {
   .farms-stats {
     grid-template-columns: repeat(2, 1fr);
   }
+  .farms-palm__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2789,6 +2857,9 @@ body {
     min-height: 250px;
   }
   .farms-stats {
+    grid-template-columns: 1fr;
+  }
+  .farms-palm__grid {
     grid-template-columns: 1fr;
   }
 }
