@@ -2725,6 +2725,106 @@ body {
   text-transform: uppercase;
 }
 
+/* Ego Farm detail */
+.farms-ego {
+  padding: 6rem 5vw;
+  background: var(--farms-cream);
+  border-top: 2px solid var(--farms-green);
+}
+
+.farms-ego__intro {
+  max-width: 900px;
+  margin-bottom: 4rem;
+}
+
+.farms-ego__intro h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: var(--farms-green);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.farms-ego__intro p {
+  font-size: 1.15rem;
+  color: #4a5d4a;
+  line-height: 1.7;
+}
+
+.farms-ego__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--farms-green);
+  border: 2px solid var(--farms-green);
+  margin-bottom: 4rem;
+}
+
+.farms-ego__stat {
+  background: white;
+  padding: 2.5rem;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.farms-ego__stat:hover {
+  background: var(--farms-green-pale);
+}
+
+.farms-ego__stat-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--farms-green);
+  margin-bottom: 0.5rem;
+}
+
+.farms-ego__stat-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a5d4a;
+}
+
+.farms-ego__services h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--farms-green);
+  margin-bottom: 0.5rem;
+}
+
+.farms-ego__subhead {
+  font-size: 1rem;
+  color: #4a5d4a;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.farms-ego__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--farms-green);
+  border: 2px solid var(--farms-green);
+}
+
+.farms-ego__card {
+  background: white;
+  padding: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.farms-ego__card:hover {
+  background: var(--farms-green);
+  color: white;
+}
+
+.farms-ego__card h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
 /* Onyinye Palm Oil detail */
 .farms-palm {
   padding: 6rem 5vw;
@@ -2829,6 +2929,9 @@ body {
   .farms-palm__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .farms-ego__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2860,6 +2963,12 @@ body {
     grid-template-columns: 1fr;
   }
   .farms-palm__grid {
+    grid-template-columns: 1fr;
+  }
+  .farms-ego__stats {
+    grid-template-columns: 1fr;
+  }
+  .farms-ego__grid {
     grid-template-columns: 1fr;
   }
 }
