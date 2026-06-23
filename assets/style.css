@@ -73,6 +73,49 @@ body {
   gap: 12px;
 }
 
+/* Home link to the left of Ecosystems */
+.navbar__home {
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(244, 241, 234, 0.85);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar__home:hover {
+  background: #0a0a0a;
+  color: white;
+  border-color: #0a0a0a;
+}
+
+.navbar__home::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: rotate(45deg);
+  transition: 0.7s;
+  pointer-events: none;
+}
+
+.navbar__home:hover::before {
+  left: 100%;
+}
+
 /* Separate Contact link next to Ecosystems */
 .navbar__contact {
   font-weight: 800;
@@ -271,9 +314,6 @@ body {
 }
 
 /* Per-item colours */
-.dd-item--home .dd-sap   { background-color: var(--text-dark); opacity: 0.05; }
-.dd-item--home:hover .dd-text { color: var(--text-dark); }
-
 .dd-item--oil .dd-sap    { background-color: var(--red-oil); }
 .dd-item--oil:hover .dd-text { color: var(--red-oil); }
 
